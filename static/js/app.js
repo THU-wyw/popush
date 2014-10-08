@@ -1,4 +1,4 @@
-var app = app || {};	//全局区域，管理MVC
+﻿var app = app || {};	//全局区域，管理MVC
 var strings = strings || {};	//当前显示语言的映射
 
 /* 全局变量 */
@@ -128,8 +128,8 @@ $(document).ready(function() {
 		fail: function(data) {
 			app.isLogined = false;
 			app.showMessageBar('#login-message', 'loadfailed');
-			if(app.socket && app.socket.socket.disconnect && app.socket.connect) {
-				app.socket.socket.disconnect();
+			if(app.socket && app.socket.disconnect && app.socket.connect) {
+				app.socket.disconnect();
 				app.socket.connect();
 			}
 			data.notRemove = true;
