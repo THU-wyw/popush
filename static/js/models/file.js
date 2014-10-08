@@ -15,6 +15,7 @@ var app = app || {};
     'css': 'css',
     'go': 'go',
     'h': 'h',
+    'hs': 'hs',
     'htm': 'htm',
     'html': 'html',
     'hpp': 'hpp',

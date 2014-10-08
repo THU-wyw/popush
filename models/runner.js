@@ -27,6 +27,12 @@ function Runner(name, type, src){
 	that.clean = 'rm -rf ' + that.dir;
 	if(process.platform == 'linux'){
 		switch(type){
+			case 'hs':
+				that.script = [
+					{cmd:'ghc', args:['-o', that.name + '.out', that.name]},
+					{cmd:A, args:['0', that.name + '.out'], start:true}
+				];
+				break;
 			case 'c':
 				that.script = [
 					{cmd:'gcc', args:['-o', that.name + '.out', that.name]},
@@ -80,6 +86,12 @@ function Runner(name, type, src){
 		}
 	}else{
 		switch(type){
+			case 'hs':
+				that.script = [
+					{cmd:'ghc', args:['-o', that.name + '.out', that.name]},
+					{cmd:'./' + that.name + '.out', args:[], start:true}
+				];
+				break;
 			case 'c':
 				that.script = [
 					{cmd:'gcc', args:['-o', that.name + '.out', that.name]},
