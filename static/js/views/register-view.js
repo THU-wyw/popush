@@ -24,7 +24,7 @@ var app = app || {};
                 str = 'name invalid';
             } else if (name.length < 6 || name.length > 20) {
                 str = 'namelength';
-            } else if (pass.length > 31) {
+            } else if (pass.length < 6 || pass.length > 31) {
                 str = 'passlength';
             } else if (pass != confirm) {
                 str = 'doesntmatch';
@@ -37,7 +37,10 @@ var app = app || {};
 					app.showMessageBar(id, data.err, 'error');
 				},
                 success: function () {
-					app.showMessageBar(id, 'registerok');
+					app.socket.emit('login', {
+                    			    name: name,
+                    			    password: pass,
+                			});
 				},
             })) {
                 app.socket.emit('register', {

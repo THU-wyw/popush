@@ -30,7 +30,11 @@ var app = app || {};
             var confirm = $('#changepassword-confirm').val();
             $('#changepassword .form-group').removeClass('error');
             $('#changepassword .help-inline').text('');
-            if (pass != confirm) {
+	    if (pass.length < 6 || pass.length > 31){
+		app.showMessageInDialog('#changepassword', 'passlength', 1);
+                return;
+	    }
+            else if (pass != confirm) {
                 app.showMessageInDialog('#changepassword', 'doesntmatch', 2);
                 return;
             }
